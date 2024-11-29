@@ -1,0 +1,137 @@
+game:GetService("StarterGui"):SetCore("SendNotification", {
+Title = "JailBreak Fucker",
+Text = "Script is loading, give it a minute."
+})
+
+task.wait(3)
+
+local function deleteDartDamage(parent)
+for _, child in pairs(parent:GetDescendants()) do
+if child.Name == "DartDamage" then
+child:Destroy()
+print("Deleted DartDamage object:", child:GetFullName())
+end
+end
+end
+
+deleteDartDamage(workspace)
+
+task.wait(1)
+
+local function destroyTouchInterest(object)
+for _, child in pairs(object:GetDescendants()) do
+if child:IsA("TouchTransmitter") then
+child:Destroy()
+print("Destroyed TouchInterest in", object:GetFullName())
+end
+end
+end
+
+local function searchAndDestroy(parent)
+for _, child in pairs(parent:GetDescendants()) do
+if child.Name == "BarbedWire" then
+destroyTouchInterest(child)
+end
+end
+end
+
+searchAndDestroy(workspace)
+
+task.wait(1)
+
+local function deleteTouchInterest(object)
+for _, child in pairs(object:GetDescendants()) do
+if child:IsA("TouchTransmitter") then
+child:Destroy()
+print("Deleted TouchInterest from", object.Name)
+end
+end
+end
+
+local function searchAndDestroy(parent)
+for _, child in pairs(parent:GetDescendants()) do
+if child.Name == "BarbedWire" or child:IsA("Part") then
+deleteTouchInterest(child)
+end
+end
+end
+
+searchAndDestroy(workspace)
+
+task.wait(1)
+
+local function deleteTouchInterest(object)
+for _, child in pairs(object:GetDescendants()) do
+if child:IsA("TouchTransmitter") then
+child:Destroy()
+print("Deleted TouchInterest from", object.Name)
+end
+end
+end
+
+local function searchAndDestroy(parent)
+for _, child in pairs(parent:GetDescendants()) do
+if child.Name == "BarbedWire" or child:IsA("Part") or child.Name == "Light" then
+deleteTouchInterest(child)
+end
+end
+end
+
+searchAndDestroy(workspace)
+
+task.wait(1)
+
+local function deleteTouchInterest()
+local path = workspace.RobberyTomb.Cart.Planks
+if path then
+for _, plank in pairs(path:GetChildren()) do
+if plank.Name == "Wood" then
+for _, child in pairs(plank:GetChildren()) do
+if child:IsA("TouchTransmitter") then
+child:Destroy()
+print("Deleted TouchInterest from Wood part")
+end
+end
+end
+end
+end
+end
+
+deleteTouchInterest()
+task.wait(1)
+game:GetService("StarterGui"):SetCore("SendNotification", {
+Title = "JailBreak Fucker",
+Text = "Script has loaded!"
+})
+
+task.wait(1)
+
+local StarterGui = game:GetService("StarterGui")
+
+local bindableFunction = Instance.new("BindableFunction")
+bindableFunction.OnInvoke = function(response)
+if response == "Yes" then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+end
+end
+
+StarterGui:SetCore("SendNotification", {
+Title = "JailBreak Fucker",
+Text = "Load Infinite Yield? (Recommended)",
+Duration = 10,
+Callback = bindableFunction,
+Button1 = "Yes",
+Button2 = "No"
+})
+
+task.wait(1)
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+Title = "JailBreak Fucker",
+Text = "FYI, Script is in beta as some features may not work"
+})
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+Title = "JailBreak Fucker",
+Text = "Script could be detected, use at your own risk."
+})
